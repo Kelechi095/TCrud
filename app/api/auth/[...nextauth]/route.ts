@@ -58,7 +58,7 @@ const authOptions: AuthOptions = {
         token.id = user.id;
       }
       if (user?.name) {
-        token.username = user.name;
+        token.name = user.name;
       }
       return token;
     },
