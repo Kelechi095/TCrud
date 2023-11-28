@@ -16,6 +16,7 @@ export default function EditSingleTodo() {
 
   useEffect(() => {
     getTodo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleUpdateTodo = async (e: any) => {

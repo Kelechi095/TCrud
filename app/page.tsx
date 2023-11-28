@@ -29,6 +29,7 @@ export default function Home() {
     if (session) {
       getTodos();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   interface Todo {
