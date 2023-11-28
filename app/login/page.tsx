@@ -21,6 +21,11 @@ export default function Login() {
     });
   };
 
+  const onGoogleSubmit = () => {
+    signIn("google");
+  };
+
+
   const handleLogin = (e: any) => {
     e.preventDefault();
 
@@ -68,6 +73,9 @@ export default function Login() {
         />
         <button className="border bg-blue-500 ml-2 cursor-pointer p-1">
           Login
+        </button>
+        <button className="border bg-blue-500 ml-2 cursor-pointer p-1" onClick={onGoogleSubmit}>
+          Continue with google
         </button>
       </form>
     </div>

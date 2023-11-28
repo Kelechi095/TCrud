@@ -5,12 +5,13 @@ import { useRouter, redirect } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useSession, getSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 export default function Register() {
   const [userData, setUserData] = useState({
-    username: "",
+    name: "",
     email: "",
-    password: "password",
+    password: "",
   });
 
   const router = useRouter();
@@ -22,6 +23,11 @@ export default function Register() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const onGoogleSubmit = () => {
+    signIn("google");
+  };
+
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
@@ -39,17 +45,19 @@ export default function Register() {
     redirect("/");
   }
 
+  
+
   return (
     <div className="p-2">
       <h2 className="my-8">Register</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          value={userData.username}
-          name="username"
+          value={userData.name}
+          name="name"
           onChange={handleChange}
           className="border p-1"
-          placeholder="username"
+          placeholder="name"
         />
         <input
           type="email"
@@ -70,6 +78,10 @@ export default function Register() {
         <button className="border bg-blue-500 ml-2 cursor-pointer p-1">
           Register
         </button>
+        <button className="border bg-blue-500 ml-2 cursor-pointer p-1" onClick={onGoogleSubmit}>
+          Continue with google
+        </button>
+
       </form>
     </div>
   );

@@ -20,7 +20,7 @@ const Navbar = () => {
         {session ? <button className="border p-1" onClick={handleSignOut}>
           Logout
         </button>: 'NextTodoApp'}
-        {session && <h2 className="text-black">Welcome: {session?.username}</h2>}
+        {session && <h2 className="text-black">Welcome: {session?.name}</h2>}
       </ul>
     </nav>
   );
