@@ -17,7 +17,7 @@ export default function Home() {
 
   const getTodos = async () => {
     try {
-      const data = await axios.get(`api/todo/${id}`);
+      const data = await axios.get(`api/todos/${id}`);
       console.log(data)
       setTodos(data.data);
     } catch (error) {
@@ -40,7 +40,7 @@ export default function Home() {
   const handleAddTodo = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post(`api/todo`, { title, userId: id });
+      await axios.post(`api/todos`, { title, userId: id });
     } catch (error) {
       console.log(error);
     }

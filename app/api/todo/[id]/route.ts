@@ -2,21 +2,18 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../lib/prismadb";
 
-
 export async function GET(
-  
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const todos = await prisma.todo.findMany({
+  const todo = await prisma.todo.findFirst({
     where: {
-      posterId: params.id,
+      id: params.id,
     },
   });
-  if(!todos) return NextResponse.json({message: 'No todo found'})
-
-  return NextResponse.json(todos);
+  return NextResponse.json(todo);
 }
+
 export async function DELETE(
   req: Request,
   { params }: { params: { id: string } }
@@ -45,19 +42,3 @@ export async function PATCH(
   return NextResponse.json({ message: "Todo Updated" });
 }
 
-/* export async function PATCH(
-    req: Request,
-    { params }: { params: { id: string } }
-  ) {
-    const {completed} = await req.json()
-    await prisma.todo.update({
-      where: {
-        id: params.id,
-      },
-      data: {
-        completed: !completed,
-      },
-    });
-    return NextResponse.json({ message: "Todo Updated" });
-  }
- */
