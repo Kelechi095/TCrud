@@ -3,10 +3,8 @@ import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prismadb";
-import nextAuth from "next-auth";
 
-
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
 
   providers: [
@@ -73,5 +71,5 @@ export const authOptions: AuthOptions = {
   debug: process.env.NODE_ENV === "development",
 };
 
-const handler = nextAuth(authOptions);
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

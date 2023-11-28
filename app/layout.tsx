@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextAuthProvider } from "./provider";
 import ToasterProvider from "./providers/ToastProvider";
-import getCurrentUser from "./actions/getCurrentUser";
 import Navbar from "./components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +18,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const currentUser = await getCurrentUser()
 
   return (
     <html lang="en">
